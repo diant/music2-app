@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'ma-album-details',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(route: ActivatedRoute) {
+    // route.params.subscribe(params => console.log(params));
+    console.log(route.snapshot.params);
+  }
 
   ngOnInit() {
   }
