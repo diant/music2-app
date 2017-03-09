@@ -4,11 +4,13 @@ import { SearchComponent } from './search/search.component';
 import { SpotifyService } from './spotify.service';
 import { SpotifyPosterComponent } from './spotify-poster/spotify-poster.component';
 import { FormsModule } from '@angular/forms';
+import {BookmarksModule} from '../bookmarks/bookmarks.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    BookmarksModule
   ],
   declarations: [
     SearchComponent,

@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {IAlbum} from '../spotify.models';
+import * as _ from 'lodash';
 
 enum Size {
   lg,
@@ -20,9 +21,10 @@ export class SpotifyPosterComponent implements OnInit {
   imageUrl: string;
 
   ngOnInit() {
-    console.log(this.size);
+    // console.log(this.size);
     const sizeIndex = Size[this.size];
-    this.imageUrl = this.album.images[sizeIndex].url;
+    const placeholder = 'http://www.stolenimages.co.uk/components/com_easyblog/themes/wireframe/images/placeholder-image.png';
+    this.imageUrl = _.get(this.album, `images[${sizeIndex}].url`, placeholder);
   }
 
 }
