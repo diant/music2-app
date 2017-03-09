@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SpotifyService} from '../spotify.service';
 import {IAlbum} from '../spotify.models';
 import {BookmarksService} from '../../bookmarks/bookmarks.service';
+import {IBookmark} from '../../bookmarks/bookmarks.models';
 
 @Component({
   selector: 'ma-search',
@@ -13,7 +14,6 @@ export class SearchComponent implements OnInit {
   albums: IAlbum[];
 
   constructor(private spotify: SpotifyService, private bs: BookmarksService) {
-    // console.log(spotify.version);
     this.search('iron maiden');
   }
 
@@ -25,14 +25,18 @@ export class SearchComponent implements OnInit {
       .subscribe(albums => this.albums = albums);
   }
 
-  getBookmarks() {
-    this.bs.getAll();
+  getBookmarks(): IBookmark[] {
+    return this.bs.getAll();
   }
 
-  saveBookmark(album: IAlbum) {
+  saveBookmark(album: IAlbum): void {
     // if (!this.bs.has(album.id)) {
       this.bs.add(album);
     // }
+  }
+
+  isBookmarked(album: IAlbum): boolean {
+    return this.bs.has(album.id);
   }
 
 }

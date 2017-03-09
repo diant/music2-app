@@ -2,6 +2,9 @@
 
   <div class="column is-3">
     <h2 class="subtitle">Bookmarks</h2>
+    <div class="columns is-multiline">
+      <ma-spotify-poster *ngFor="let bookmark of getBookmarks()" [album]="bookmark" size="sm" class="column is-6"></ma-spotify-poster>
+    </div>
   </div>
 
   <div class="column">
@@ -21,6 +24,7 @@
           3. move img and album title to spotify-poster.component.html
           4. use the component in search component html
         -->
+        <button class="button is-info" [disabled]="isBookmarked(album)" (click)="saveBookmark(album)">save</button>
       </div>
     </div>
   </div>
