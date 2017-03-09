@@ -6,10 +6,10 @@
 
   <div class="column">
     <h2 class="subtitle">Find albums</h2>
-    <div class="control has-addons">
-      <input [(ngModel)]="query" type="search" class="input" autofocus>
+    <form class="control has-addons">
+      <input name="query" [(ngModel)]="query" type="search" class="input" autofocus>
       <button class="button is-primary" (click)="search(query)">Search</button>
-    </div>
+    </form>
 
     <div class="columns is-multiline">
       <div class="column is-6" *ngFor="let album of albums">
