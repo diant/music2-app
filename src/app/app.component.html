@@ -1,3 +1,13 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="nav has-shadow">
+  <div class="container">
+    <div class="nav-left">
+      <a routerLink="" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}" class="nav-item is-tab">Home</a>
+      <a routerLink="spotify" routerLinkActive="is-active" class="nav-item is-tab">Music</a>
+      <a routerLink="/contact" routerLinkActive="is-active" class="nav-item is-tab">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
