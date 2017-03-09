@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
 
   constructor(private spotify: SpotifyService) {
     // console.log(spotify.version);
-    this.search('batman');
+    this.search('iron maiden');
   }
 
   ngOnInit() {

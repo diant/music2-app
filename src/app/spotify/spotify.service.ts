@@ -16,7 +16,7 @@ export class SpotifyService {
   }
 
   searchAlbums(query: string): Observable<IAlbum[]> {
-    const apiUrl = `${this.apiBase}search?type=album&q=${query}`;
+    const apiUrl = `${this.apiBase}search?type=album&q=${query}&limit=25`;
     return this.http.get(apiUrl)
                       .map(response => response.json().albums.items);
   }
