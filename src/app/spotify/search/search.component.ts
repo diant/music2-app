@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SpotifyService} from '../spotify.service';
+import {IAlbum} from '../spotify.models';
 
 @Component({
   selector: 'ma-search',
@@ -7,6 +8,8 @@ import {SpotifyService} from '../spotify.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+
+  albums: IAlbum[];
 
   constructor(private spotify: SpotifyService) {
     // console.log(spotify.version);
@@ -18,7 +21,7 @@ export class SearchComponent implements OnInit {
 
   search(query: string) {
     this.spotify.searchAlbums(query)
-      .subscribe(response => console.table(response, ['album_type', 'href']));
+      .subscribe(albums => this.albums = albums);
   }
 
 }
