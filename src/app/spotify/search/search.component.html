@@ -3,7 +3,9 @@
   <div class="column is-3">
     <h2 class="subtitle">Bookmarks</h2>
     <div class="columns is-multiline">
-      <ma-spotify-poster *ngFor="let bookmark of getBookmarks()" [album]="bookmark" size="sm" class="column is-6"></ma-spotify-poster>
+      <ma-spotify-poster *ngFor="let bookmark of getBookmarks()" [album]="bookmark" size="sm" class="column is-6">
+        <button class="delete is-small" (click)="removeBookmark(bookmark.id)"></button>
+      </ma-spotify-poster>
     </div>
   </div>
 
@@ -16,15 +18,16 @@
 
     <div class="columns is-multiline">
       <div class="column is-6" *ngFor="let album of albums">
-
-        <ma-spotify-poster [album]="album" size="md"></ma-spotify-poster>
+        <ma-spotify-poster [album]="album" size="md">
+          <button class="button is-dark" [disabled]="isBookmarked(album)" (click)="saveBookmark(album)">save</button>
+        </ma-spotify-poster>
         <!--
           1. generate a component in spotify module (ng g c spotify/spotify-poster)
           2. define the `album` @input
           3. move img and album title to spotify-poster.component.html
           4. use the component in search component html
         -->
-        <button class="button is-info" [disabled]="isBookmarked(album)" (click)="saveBookmark(album)">save</button>
+
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SpotifyService} from '../spotify.service';
 import {IAlbum} from '../spotify.models';
 import {BookmarksService} from '../../bookmarks/bookmarks.service';
-import {IBookmark} from '../../bookmarks/bookmarks.models';
+import {IBookmark, BookmarkId} from '../../bookmarks/bookmarks.models';
 
 @Component({
   selector: 'ma-search',
@@ -35,8 +35,11 @@ export class SearchComponent implements OnInit {
     // }
   }
 
+  removeBookmark(id: BookmarkId) {
+    this.bs.remove(id);
+  }
+
   isBookmarked(album: IAlbum): boolean {
     return this.bs.has(album.id);
   }
-
 }
