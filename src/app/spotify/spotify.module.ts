@@ -5,16 +5,20 @@ import { SpotifyService } from './spotify.service';
 import { SpotifyPosterComponent } from './spotify-poster/spotify-poster.component';
 import { FormsModule } from '@angular/forms';
 import {BookmarksModule} from '../bookmarks/bookmarks.module';
+import { AlbumDetailsComponent } from './album-details/album-details.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     BookmarksModule
   ],
   declarations: [
     SearchComponent,
-    SpotifyPosterComponent
+    SpotifyPosterComponent,
+    AlbumDetailsComponent
   ],
   providers: [
     SpotifyService

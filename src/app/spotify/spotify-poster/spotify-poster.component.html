@@ -1,4 +1,6 @@
 <img [src]="imageUrl" alt="">
 <ng-content></ng-content>
-<h3 class="subtitle">{{album.name}}</h3>
+<p>
+  <a routerLink="/spotify/{{album.id}}">{{album.name}}</a>
+</p>
 
