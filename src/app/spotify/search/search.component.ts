@@ -10,13 +10,15 @@ export class SearchComponent implements OnInit {
 
   constructor(private spotify: SpotifyService) {
     // console.log(spotify.version);
+    this.search('batman');
   }
 
   ngOnInit() {
   }
 
   search(query: string) {
-    this.spotify.searchAlbums('batman');
+    this.spotify.searchAlbums(query)
+      .subscribe(response => console.log(response.json()));
   }
 
 }
