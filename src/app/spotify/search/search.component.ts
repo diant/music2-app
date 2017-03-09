@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
 
   search(query: string) {
     this.spotify.searchAlbums(query)
-      .subscribe(response => console.log(response.json()));
+      .subscribe(response => console.table(response, ['album_type', 'href']));
   }
 
 }
