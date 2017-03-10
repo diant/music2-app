@@ -9,6 +9,7 @@ import { AlbumDetailsComponent } from './album-details/album-details.component';
 import {RouterModule} from '@angular/router';
 import {AlbumDetailsResolver} from './album-details/album-details.resolver';
 import {AlbumDetailsGuard} from './album-details/album-details.guard';
+import { MsToMinutesPipe } from './ms-to-minutes.pipe';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {AlbumDetailsGuard} from './album-details/album-details.guard';
   declarations: [
     SearchComponent,
     SpotifyPosterComponent,
-    AlbumDetailsComponent
+    AlbumDetailsComponent,
+    MsToMinutesPipe
   ],
   providers: [
     SpotifyService,

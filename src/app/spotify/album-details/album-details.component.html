@@ -11,14 +11,14 @@
       <tr>
         <th>#</th>
         <th>track name</th>
-        <th>duration</th>
+        <th (click)="showSuffix = !showSuffix">duration</th>
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let track of album.tracks.items">
+        <tr [class.is-danger]="track.duration_ms > 400000" *ngFor="let track of album.tracks.items">
           <td>{{track.track_number}}</td>
           <td>{{track.name}}</td>
-          <td>{{track.duration_ms}}</td>
+          <td>{{track.duration_ms | msToMinutes:showSuffix}}</td>
         </tr>
       </tbody>
     </table>
