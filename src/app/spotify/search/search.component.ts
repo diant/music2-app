@@ -3,6 +3,9 @@ import {SpotifyService} from '../spotify.service';
 import {IAlbum} from '../spotify.models';
 import {BookmarksService} from '../../bookmarks/bookmarks.service';
 import {IBookmark, BookmarkId} from '../../bookmarks/bookmarks.models';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'ma-search',
@@ -12,12 +15,24 @@ import {IBookmark, BookmarkId} from '../../bookmarks/bookmarks.models';
 export class SearchComponent implements OnInit {
 
   albums: IAlbum[];
+  query: string;
+  searchForm: FormGroup;
 
-  constructor(private spotify: SpotifyService, private bs: BookmarksService) {
+  constructor(private spotify: SpotifyService,
+              private bs: BookmarksService,
+              private fb: FormBuilder) {
+
     this.search('iron maiden');
   }
 
   ngOnInit() {
+    this.searchForm = this.fb.group({
+                        query: ['iron maiden']
+                      });
+    this.searchForm.valueChanges
+                        .debounceTime(200) // rxjs
+                        .distinctUntilChanged()
+                        .subscribe(({query}) => this.search(query));
   }
 
   search(query: string) {

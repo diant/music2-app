@@ -3,7 +3,6 @@ import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {IAlbum, IAlbumDetails} from './spotify.models';
-// import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class SpotifyService {
@@ -16,6 +15,10 @@ export class SpotifyService {
   }
 
   searchAlbums(query: string): Observable<IAlbum[]> {
+    // if(!query) {
+    //  return Observable.of([]);
+    // }
+
     const apiUrl = `${this.apiBase}search?type=album&q=${query}`;
     return this.http.get(apiUrl)
                       .map(response => response.json().albums.items);

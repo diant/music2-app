@@ -11,8 +11,8 @@
 
   <div class="column">
     <h2 class="subtitle">Find albums</h2>
-    <form class="control has-addons">
-      <input name="query" [(ngModel)]="query" type="search" class="input" autofocus>
+    <form [formGroup]="searchForm" class="control has-addons">
+      <input formControlName="query" name="query" type="search" class="input" autofocus>
       <button class="button is-primary" (click)="search(query)">Search</button>
     </form>
 
