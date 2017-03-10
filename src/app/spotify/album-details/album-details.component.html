@@ -3,7 +3,8 @@
     <ma-spotify-poster [album]="album" size="lg"></ma-spotify-poster>
   </div>
   <div class="column">
-    <h1 class="title">{{album.name}}</h1>
+    <h1 class="title">{{album.name | uppercase}}</h1>
+    <!-- <pre>{{album | json}}</pre>  DEBUG: show album as Json object using the pipe(filter) json-->
     <h2 class="subtitle">{{album.artists[0].name}}</h2>
     <table class="table">
       <thead>

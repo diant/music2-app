@@ -17,7 +17,7 @@
     </form>
 
     <div class="columns is-multiline">
-      <div class="column is-6" *ngFor="let album of albums">
+      <div class="column is-4" *ngFor="let album of albums">
         <ma-spotify-poster [album]="album" size="md">
           <button class="button is-dark" [disabled]="isBookmarked(album)" (click)="saveBookmark(album)">save</button>
         </ma-spotify-poster>
