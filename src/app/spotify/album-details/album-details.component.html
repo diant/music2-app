@@ -12,13 +12,15 @@
         <th>#</th>
         <th>track name</th>
         <th (click)="showSuffix = !showSuffix">duration</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
         <tr [class.is-danger]="track.duration_ms > 400000" *ngFor="let track of album.tracks.items">
           <td>{{track.track_number}}</td>
-          <td>{{track.name}}</td>
+          <td title="{{track.external_urls.spotify}}">{{track.name}}</td>
           <td>{{track.duration_ms | msToMinutes:showSuffix}}</td>
+          <td><a href="{{track.external_urls.spotify}}"></a></td>
         </tr>
       </tbody>
     </table>

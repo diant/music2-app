@@ -1,15 +1,33 @@
 <div class="columns">
-  <form class="column is-6 is-offset-3">
+  <!-- form novalidate disables default browser validation-->
+  <form #formRef="ngForm" class="column is-6 is-offset-3" novalidate>
     <h1 class="title">Contact us</h1>
     <label for="name" class="label">Your name</label>
     <div class="control">
-      <input id="name" type="text" class="input" autofocus>
+      <input id="name" name="name" #nameRef="ngModel" type="text" class="input" [(ngModel)]="name"
+             [class.is-danger]="nameRef.touched && nameRef.invalid"
+             placeholder="Name here..."
+             required minlength="3" autofocus>
+      <!--<pre>{{nameRef.errors | json}}</pre>-->
+      <div class="help is-danger" *ngIf="nameRef.touched && nameRef.invalid">
+        <span *ngIf="nameRef.errors.required">This field is required</span>
+        <span *ngIf="nameRef.errors.minlength">Please enter at least 3 characters</span>
+      </div>
     </div>
     <label for="message" class="label">Message</label>
     <div class="control">
-      <textarea name="message" id="message" class="textarea" cols="30" rows="10"></textarea>
+      <textarea name="message" id="message" #msgRef="ngModel" class="textarea" [(ngModel)]="message"
+                [class.is-danger]="msgRef.touched && msgRef.invalid"
+                placeholder="Message here ..."
+                required minlength="10"
+                cols="30" rows="10">
+      </textarea>
+      <div class="help is-danger" *ngIf="msgRef.touched && msgRef.invalid">
+        <span *ngIf="msgRef.errors.required">This field is required</span>
+        <span *ngIf="msgRef.errors.minlength">Please enter at least 10 characters</span>
+      </div>
     </div>
 
-    <button class="button is-primary is-pulled-right">Send</button>
+    <button class="button is-primary is-pulled-right" [disabled]="formRef.invalid">Send</button>
   </form>
 </div>
