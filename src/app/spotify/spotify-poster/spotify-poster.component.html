@@ -1,6 +1,8 @@
-<img [src]="imageUrl" alt="">
-<ng-content></ng-content>
-<p>
-  <a routerLink="/spotify/{{album.id}}">{{album.name}}</a>
-</p>
+<div *ngIf="album">
+  <img [src]="imageUrl" alt="">
+  <ng-content></ng-content>
+  <p>
+    <a routerLink="/spotify/{{album.id}}">{{album.name}}</a>
+  </p>
+</div>
 

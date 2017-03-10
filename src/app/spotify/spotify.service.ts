@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import {IAlbum} from './spotify.models';
+import {IAlbum, IAlbumDetails} from './spotify.models';
 // import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -21,4 +21,9 @@ export class SpotifyService {
                       .map(response => response.json().albums.items);
   }
 
+  getAlbum(albumId: string): Observable<IAlbumDetails> {
+    const apiUrl = `${this.apiBase}albums/${albumId}`;
+    return this.http.get(apiUrl)
+      .map(response => response.json());
+  }
 }

@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import {BookmarksModule} from '../bookmarks/bookmarks.module';
 import { AlbumDetailsComponent } from './album-details/album-details.component';
 import {RouterModule} from '@angular/router';
+import {AlbumDetailsResolver} from './album-details/album-details.resolver';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {RouterModule} from '@angular/router';
     AlbumDetailsComponent
   ],
   providers: [
-    SpotifyService
+    SpotifyService,
+    AlbumDetailsResolver
   ]
 })
 export class SpotifyModule { }
