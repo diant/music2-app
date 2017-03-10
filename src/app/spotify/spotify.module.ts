@@ -8,6 +8,7 @@ import {BookmarksModule} from '../bookmarks/bookmarks.module';
 import { AlbumDetailsComponent } from './album-details/album-details.component';
 import {RouterModule} from '@angular/router';
 import {AlbumDetailsResolver} from './album-details/album-details.resolver';
+import {AlbumDetailsGuard} from './album-details/album-details.guard';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {AlbumDetailsResolver} from './album-details/album-details.resolver';
   ],
   providers: [
     SpotifyService,
-    AlbumDetailsResolver
+    AlbumDetailsResolver,
+    AlbumDetailsGuard
   ]
 })
 export class SpotifyModule { }
